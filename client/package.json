@@ -1,0 +1,13 @@
+{
+  "name": "teadex-client-monorepo",
+  "private": true,
+  "workspaces": [
+    "public-client",
+    "admin-client",
+    "shared"
+  ],
+  "scripts": {
+    "build:public": "npm run build --workspace=public-client",
+    "build:admin": "npm run build --workspace=admin-client"
+  }
+}

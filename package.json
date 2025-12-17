@@ -1,0 +1,27 @@
+{
+  "name": "some_tea",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "workspaces": [
+    "backend",
+    "client/public-client",
+    "client/admin-client",
+    "client/shared"
+  ],
+  "scripts": {
+    "build": "npm install && npm run build --workspace=client/public-client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tangentialalmond/teadex.git"
+  },
+  "keywords": [],
+  "author": "R.H. Amanda Ng",
+  "license": "AGPL-3.0-only",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/tangentialalmond/teadex/issues"
+  },
+  "homepage": "https://github.com/tangentialalmond/teadex#readme"
+}
