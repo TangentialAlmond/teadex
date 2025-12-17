@@ -1,0 +1,21 @@
+import { Route, Routes } from "react-router"
+import HomePage from "./pages/HomePage"
+import CreatePage from "./pages/CreatePage"
+import EntryViewPage from "./pages/EntryViewPage"
+import EntryEditPage from "./pages/EntryEditPage"
+import toast from "react-hot-toast"
+
+const App = () => {
+  return (
+    <div data-theme="cupcake">
+      <Routes>
+        <Route path="/" element={<HomePage />}/>
+        <Route path="/create" element={<CreatePage />}/>
+        <Route path="/entry/:id/view" element={<EntryViewPage />}/>
+        <Route path="/entry/:id/edit" element={<EntryEditPage />}/>
+      </Routes>
+    </div>
+  )
+}
+
+export default App
