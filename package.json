@@ -10,7 +10,8 @@
     "client/shared"
   ],
   "scripts": {
-    "build": "npm install && npm run build --workspace=client/public-client"
+    "build": "npm install && npm run build --workspace=client/public-client",
+    "start": "npm run start --prefix backend"
   },
   "repository": {
     "type": "git",
