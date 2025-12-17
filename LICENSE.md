@@ -1,5 +1,4 @@
-teadex
-<br>A full-stack application cataloging tea, featuring visual documentation and
+teadex: A full-stack application cataloging tea, featuring visual documentation and
 details on their cultivation and processing workflow.
 Copyright (C) 2025 R.H. Amanda Ng
 
