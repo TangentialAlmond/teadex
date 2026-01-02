@@ -4,7 +4,7 @@ import countryList from "country-list" // For standardized list of countries
 // --- CONSTANTS AND ENUMERATIONS ---
 const TEA_TYPES = [
     "white", "green", "black", "yellow", "oolong",
-    "fermented", "tisane/non-camellia sinensis"
+    "dark", "tisane/non-camellia sinensis"
 ]
 const HARVEST_METHODS = [
     "handpicked", "tea scissors", "handheld-machine",
