@@ -85,7 +85,7 @@ const EntryForm = ({ entry, isEditing, handleChange, handleSubmit,
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <TextFieldRenderer label="Tea Name" field="name" 
-                                   required={true} 
+                                   required={true} showCharLimit={false}
                                    entry={entry} isEditing={isEditing} 
                                    handleChange={handleChange} />
                 <SelectRenderer label="Tea Type" field="teaType" 
@@ -103,7 +103,8 @@ const EntryForm = ({ entry, isEditing, handleChange, handleSubmit,
                                 options={COUNTRIES} 
                                 entry={entry} isEditing={isEditing} 
                                 handleChange={handleChange} />
-                <TextFieldRenderer label="Region(s)" field="regions" 
+                <TextFieldRenderer label="Region(s)" field="regions"
+                                   showCharLimit={false} 
                                    entry={entry} isEditing={isEditing} 
                                    handleChange={handleChange} />
                                    
@@ -139,19 +140,22 @@ const EntryForm = ({ entry, isEditing, handleChange, handleSubmit,
                 Cultivation & Harvesting
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <TextFieldRenderer label="Cultivar" field="cultivar" 
+                <TextFieldRenderer label="Cultivar" field="cultivar"
+                                   showCharLimit={false} 
                                    entry={entry} isEditing={isEditing} 
                                    handleChange={handleChange} />
                 <TextFieldRenderer label="Cultivation Process" 
-                                   field="cultivationProcess" 
+                                   field="cultivationProcess"
+                                   showCharLimit={false}
                                    entry={entry} isEditing={isEditing} 
                                    handleChange={handleChange} />
                 <TextFieldRenderer label="Harvesting Time" 
-                                   field="harvestingTime" 
+                                   field="harvestingTime"
+                                   showCharLimit={false}
                                    entry={entry} isEditing={isEditing} 
                                    handleChange={handleChange} />
                 <SelectRenderer label="Harvesting Method" 
-                                field="harvestingMethod" 
+                                field="harvestingMethod"
                                 options={HARVEST_METHODS} 
                                 entry={entry} isEditing={isEditing} 
                                 handleChange={handleChange} />
@@ -173,13 +177,16 @@ const EntryForm = ({ entry, isEditing, handleChange, handleSubmit,
                 Entities
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <TextFieldRenderer label="Farm" field="farm" 
+                <TextFieldRenderer label="Farm" field="farm"
+                                   showCharLimit={false}
                                    entry={entry} isEditing={isEditing} 
                                    handleChange={handleChange} />
-                <TextFieldRenderer label="Farmer" field="farmer" 
+                <TextFieldRenderer label="Farmer" field="farmer"
+                                   showCharLimit={false}
                                    entry={entry} isEditing={isEditing} 
                                    handleChange={handleChange} />
                 <TextFieldRenderer label="Merchant" field="merchant" 
+                                   showCharLimit={false}
                                    entry={entry} isEditing={isEditing} 
                                    handleChange={handleChange} />
             </div>
