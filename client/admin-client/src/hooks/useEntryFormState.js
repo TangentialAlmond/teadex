@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useCallback } from "react"
 import toast from "react-hot-toast"
 
 const MAX_FILE_SIZE_MB = 5 
@@ -61,9 +61,9 @@ export const useEntryFormState = (initialData) => {
      * Safely loads external data (e.g. from an API) into the state.
      * It uses the same sanitization logic to prevent UI crashes.
      */
-    const loadEntryData = (data) => {
+    const loadEntryData = useCallback((data) => {
         setEntry(sanitizeData(data))
-    }
+    }, [])  // Empty array means "only create this function once"
   
     // Handles changes for text/select/number inputs
     const handleChange = (e) => {
