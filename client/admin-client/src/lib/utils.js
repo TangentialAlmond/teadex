@@ -46,12 +46,15 @@ export const validateCoreEntryFields = (entry, file) => {
  * @param {object} entry The current form state object, where these fields are stored as strings.
  * @returns {Array<string>} An array of error messages for invalid fields.
  */
+// shared/lib/utils.js
 export const validateOriginAndGeographyFields = (entry) => {
     const errors = []
-
-    // --- Define Fields and Constraints ---
     
-    // Constraints match your Mongoose schema
+    // Safely extract coordinates with defaults to prevent crashes
+    const coords = entry.coordinates || {}
+    const lat = coords.latitude
+    const lng = coords.longitude
+
     const numericFields = [
         { 
             name: "Altitude (meters)", 
@@ -62,63 +65,52 @@ export const validateOriginAndGeographyFields = (entry) => {
         },
         { 
             name: "Latitude", 
-            key: 'coordinates.latitude', 
+            key: 'latitude', 
             min: -90, 
             max: 90, 
-            value: entry.coordinates.latitude 
+            value: lat 
         },
         { 
             name: "Longitude", 
-            key: 'coordinates.longitude', 
+            key: 'longitude', 
             min: -180, 
             max: 180, 
-            value: entry.coordinates.longitude 
+            value: lng 
         },
     ]
-
-    // --- Validation Loop ---
 
     for (const field of numericFields) {
         const { name, min, max, value } = field
         
-        // Handle empty fields (they are optional, so an empty string is allowed)
-        if (value === "" || value === null) {
-            continue // Valid because they are optional
-        }
+        // A field is "Empty" if it is null, undefined, or an empty string
+        const isEmpty = value === "" || value === null || value === undefined
 
-        // --- Check 1: Must be a number (float) ---
-        
-        // parseFloat will convert valid numeric strings.
-        // If the input is something like "123a" or just "-" or ".", it will return NaN.
-        const numValue = parseFloat(value)
-
-        if (isNaN(numValue) || !isFinite(numValue)) {
-            // Note: We use the range limits in the error message for clarity
-            errors.push(`${name} must be a number between ${min} and ${max}`)
+        if (isEmpty) {
             continue
         }
 
-        // --- Check 2: Must be within the acceptable range ---
-        
+        const numValue = parseFloat(value)
+
+        if (isNaN(numValue) || !isFinite(numValue)) {
+            errors.push(`${name} must be a number`)
+            continue
+        }
+
         if (numValue < min || numValue > max) {
             errors.push(`${name} must be between ${min} and ${max}`)
         }
     }
 
-    // --- Handle Coordinate Pair Completeness (Custom Check) ---
+    // --- Revised Coordinate Pair Check ---
+    const latEmpty = lat === "" || lat === null || lat === undefined
+    const lngEmpty = lng === "" || lng === null || lng === undefined
 
-    // Find the Latitude and Longitude objects from the loop results
-    const latField = numericFields.find(f => f.key === 'coordinates.latitude')
-    const longField = numericFields.find(f => f.key === 'coordinates.longitude')
-
-    console.log("Validation check", latField, longField)
-    
-    // Check if one coordinate is present but the other is missing
-    const latPresent = latField.value !== "" && latField.value !== null
-    const longPresent = longField.value !== "" && longField.value !== null
-
-    if ((latPresent && !longPresent) || (!latPresent && longPresent)) {
-        errors.push("If coordinates are provided, both Latitude and Longitude must be entered.")
+    // If one is filled and the other isn't, throw error
+    if (!latEmpty && lngEmpty) {
+        errors.push("Longitude is required if Latitude is provided")
+    }
+    if (latEmpty && !lngEmpty) {
+        errors.push("Latitude is required if Longitude is provided")
     }
 
     return errors

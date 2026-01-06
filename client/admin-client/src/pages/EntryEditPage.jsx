@@ -14,7 +14,7 @@ const EntryEditPage = () => {
   /// Initialize hook without data yet
   const { 
     entry, 
-    setEntry, // Used to load fetched data
+    loadEntryData, // Used to load fetched data
     file, 
     handleChange, 
     handleFileChange 
@@ -25,10 +25,7 @@ const EntryEditPage = () => {
     const fetchData = async () => {
       try {
         const res = await api.get(`/entries/${id}`)
-
-        // Load fetched data into the hook's state
-        setEntry(res.data)
-
+        loadEntryData(res.data)
       } catch (error) {
         if (error.response.status === 429) {
           toast.error("Hold your horses. You've made too many requests.")
@@ -40,7 +37,7 @@ const EntryEditPage = () => {
       }
     }
     fetchData()
-  }, [id, setEntry]) // Include setEntry in deps
+  }, [id, loadEntryData])
 
   // Handles form submission (PUT request)
   const handleSubmit = async (e) => {
