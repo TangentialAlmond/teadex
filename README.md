@@ -31,7 +31,11 @@ The project features a split-client architecture:
 ## 🔮 Preview
 Currently, only the public-client is live at https://teadex.onrender.com/. Here's a sneak peek of the early version of the admin-client with the minimum CRUD application features.
 
-[![Watch the video](https://raw.githubusercontent.com/tangentialalmond/teadex/master/preview/thumbnail.png)](https://raw.githubusercontent.com/tangentialalmond/teadex/master/preview/admin-client-preview.mov)
+<div align="center">
+  <video src="preview/admin-client-preview.mov" width="100%" muted autoplay loop>
+    Your browser does not support the video tag.
+  </video>
+</div>
 
 ## 💻 Tech Stack
 * **Frontend:** React (Vite), Tailwind CSS, DaisyUI
