@@ -32,7 +32,7 @@ The project features a split-client architecture:
 Currently, only the public-client is live at https://teadex.onrender.com/. Here's a sneak peek of the early version of the admin-client with the minimum CRUD application features.
 
 <div align="center">
-  <video src="preview/admin-client-preview-480p.mov" width="80%" muted autoplay loop>
+  <video src="https://github.com/user-attachments/assets/6306a481-1079-42a9-b658-7008a904324a" width="80%" muted autoplay loop>
     Your browser does not support the video tag.
   </video>
 </div>
