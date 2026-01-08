@@ -5,12 +5,12 @@ import { Redis } from "@upstash/redis"
 // Allow ratelimiter to access .env
 dotenv.config()
 
-// Create a ratelimiter that allows 100 requests per 15 min
+// Create a ratelimiter that allows 1000 requests per 5 min
 // Note: I tried typing "15 min" instead of "15 m", which seems
 // to cause some kind of error.
 const ratelimit = new Ratelimit({
     redis: Redis.fromEnv(),
-    limiter: Ratelimit.slidingWindow(100, "15 m")
+    limiter: Ratelimit.slidingWindow(1000, "5 m")
 })
 
 export default ratelimit
