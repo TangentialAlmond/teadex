@@ -21,6 +21,9 @@ export async function getEntryById(req, res) {
         res.status(200).json(entry)
     } catch (error) {
         console.error("Error in getEntryById controller", error)
+        if (error.name === "CastError") {
+            return res.status(404).json({message: "Invalid ID format"})
+        }
         res.status(500).json({message: "Internal server error"})
     }
 }
