@@ -4,10 +4,14 @@ import CreatePage from "./pages/CreatePage"
 import EntryViewPage from "./pages/EntryViewPage"
 import EntryEditPage from "./pages/EntryEditPage"
 import NotFoundPage from "./pages/NotFoundPage"
+import Navbar from "./components/Navbar"
 
 const App = () => {
   return (
     <div data-theme="cupcake">
+
+      <Navbar />
+
       <Routes>
         <Route path="/" element={<HomePage />}/>
         <Route path="/create" element={<CreatePage />}/>
