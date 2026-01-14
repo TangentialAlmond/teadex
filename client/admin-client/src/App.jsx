@@ -3,7 +3,7 @@ import HomePage from "./pages/HomePage"
 import CreatePage from "./pages/CreatePage"
 import EntryViewPage from "./pages/EntryViewPage"
 import EntryEditPage from "./pages/EntryEditPage"
-import toast from "react-hot-toast"
+import NotFoundPage from "./pages/NotFoundPage"
 
 const App = () => {
   return (
@@ -13,6 +13,7 @@ const App = () => {
         <Route path="/create" element={<CreatePage />}/>
         <Route path="/entry/:id/view" element={<EntryViewPage />}/>
         <Route path="/entry/:id/edit" element={<EntryEditPage />}/>
+        <Route path="*" element={<NotFoundPage />}/>
       </Routes>
     </div>
   )

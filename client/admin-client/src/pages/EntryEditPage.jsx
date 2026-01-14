@@ -5,6 +5,7 @@ import api from "../lib/axios"
 import EntryForm from "../components/EntryForm/EntryForm"
 import { validateCoreEntryFields, validateOriginAndGeographyFields } from "../lib/utils"
 import { useEntryFormState } from "../hooks/useEntryFormState"
+import NotFoundPage from "./NotFoundPage"
 
 const EntryEditPage = () => {
   const { id } = useParams()
@@ -29,7 +30,7 @@ const EntryEditPage = () => {
       } catch (error) {
         if (error.response.status === 429) {
           toast.error("Hold your horses. You've made too many requests.")
-        } else {
+        } else if (error.response?.status !== 404) {
           toast.error("Failed to fetch data for editing. Please try again later.")
         }
       } finally {
@@ -96,6 +97,13 @@ const EntryEditPage = () => {
 
   if (loading) {
     return <div className="text-center mt-20 text-xl">Loading editor...</div>
+  }
+
+  // entry is a truthy object owing to how useEntryFormState.js
+  // is defined. As such, the only way to check if the entry is
+  // non-exixtent in the database is to catch a missing ID.
+  if (!entry._id) {
+    return <NotFoundPage />
   }
   
   return (
