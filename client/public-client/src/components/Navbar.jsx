@@ -15,7 +15,7 @@ const Navbar = () => {
                     {/* TODO: Add Search icon from lucide-react beside the search bar placeholder*/}
                     <input type="text" placeholder="Search bar (not working yet)" className="input input-bordered w-24 md:w-auto" />
                 </div>
-
+                
             </div>
         </div>
 
