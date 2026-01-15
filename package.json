@@ -10,6 +10,8 @@
     "client/shared"
   ],
   "scripts": {
+    "dev:public": "npm run dev --workspace=client/public-client",
+    "dev:backend": "npm run dev --prefix backend",
     "build": "npm install && npm run build --workspace=client/public-client",
     "start": "npm run start --prefix backend"
   },
