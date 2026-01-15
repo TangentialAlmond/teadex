@@ -3,7 +3,7 @@ import HomePage from "./pages/HomePage"
 import CreatePage from "./pages/CreatePage"
 import EntryViewPage from "./pages/EntryViewPage"
 import EntryEditPage from "./pages/EntryEditPage"
-import NotFoundPage from "./pages/NotFoundPage"
+import NotFoundPage from "../../shared/pages/NotFoundPage"
 import Navbar from "./components/Navbar"
 
 const App = () => {
