@@ -5,7 +5,7 @@ import api from "../lib/axios"
 import EntryForm from "../components/EntryForm/EntryForm"
 import { validateCoreEntryFields, validateOriginAndGeographyFields } from "../lib/utils"
 import { useEntryFormState } from "../hooks/useEntryFormState"
-import NotFoundPage from "./NotFoundPage"
+import NotFoundPage from "../../../shared/pages/NotFoundPage"
 
 const EntryEditPage = () => {
   const { id } = useParams()

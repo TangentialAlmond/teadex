@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import { useParams, Link } from "react-router"
 import api from "../lib/axios"
 import EntryForm from "../components/EntryForm/EntryForm"
-import NotFoundPage from "./NotFoundPage"
+import NotFoundPage from "../../../shared/pages/NotFoundPage"
 
 const EntryViewPage = () => {
   const { id } = useParams()

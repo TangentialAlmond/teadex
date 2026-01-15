@@ -1,9 +1,9 @@
 import toast from "react-hot-toast"
 import { useEffect, useState } from "react"
 import api from "../lib/axios"
-import Navbar from "../components/Navbar"
 import EntryCard from "../components/EntryCard"
-import RateLimitedUI from "../components/RateLimitedUI"
+import RateLimitedUI from "../../../shared/components/RateLimitedUI"
+import Disclaimer from "../../../shared/components/Disclaimer"
 
 const HomePage = () => {
   const [isRateLimited, setIsRateLimited] = useState(false)
@@ -37,6 +37,8 @@ const HomePage = () => {
     <div className="min-h-screen">
 
       {isRateLimited && <RateLimitedUI />}
+
+      <Disclaimer />
 
       <div className="max-w-7xl mx-auto p-4 mt-6">
         {loading && <div className="text-center text-primary-content py-10">Loading entries...</div> }

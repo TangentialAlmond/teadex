@@ -1,7 +1,7 @@
 {
-  "name": "some_tea",
-  "version": "1.0.0",
-  "description": "",
+  "name": "teadex",
+  "version": "0.1",
+  "description": "A full-stack application for the systematic cataloging of teas, featuring visual documentation, cultivation origins, and detailed processing workflows.",
   "main": "index.js",
   "workspaces": [
     "backend",
@@ -10,6 +10,9 @@
     "client/shared"
   ],
   "scripts": {
+    "dev:public": "npm run dev --workspace=client/public-client",
+    "dev:admin": "npm run dev --workspace=client/admin-client",
+    "dev:backend": "npm run dev --prefix backend",
     "build": "npm install && npm run build --workspace=client/public-client",
     "start": "npm run start --prefix backend"
   },

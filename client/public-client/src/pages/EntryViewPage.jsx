@@ -1,8 +1,9 @@
 import toast from "react-hot-toast"
 import { useState, useEffect } from "react"
-import { useParams, Link } from "react-router"
+import { useParams } from "react-router"
 import api from "../lib/axios"
 import EntryForm from "../components/EntryForm"
+import NotFoundPage from "../../../shared/pages/NotFoundPage"
 
 const EntryViewPage = () => {
   const { id } = useParams()
@@ -19,8 +20,8 @@ const EntryViewPage = () => {
         console.error("Error fetching entry:", error)
         if (error.response.status === 429) {
           toast.error(("Hold your horses. You're trying to view too many entries."))
-        } else {
-          toast.error("Failed to load tea entry. Please try again later.")
+        } else if (error.response?.status !== 404) {
+          toast.error("Failed to fetch data for editing. Please try again later.")
         }
         setEntry(null) // Ensure state is null on error
       } finally {
@@ -36,15 +37,7 @@ const EntryViewPage = () => {
   
   if (!entry) {
     return (
-      <div className="text-center mt-20 p-4">
-        <h2 className="text-2xl text-error">Entry Not Found</h2>
-        <p className="mt-2">
-          The requested tea entry could not be loaded.
-        </p>
-        <Link to="/" className="btn btn-primary mt-4">
-          Go Back Home
-        </Link>
-      </div>
+      <NotFoundPage />
     )
   }
 
