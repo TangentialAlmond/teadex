@@ -2,7 +2,7 @@ import toast from "react-hot-toast"
 import { useEffect, useState } from "react"
 import api from "../lib/axios"
 import EntryCard from "../components/EntryCard"
-import RateLimitedUI from "../components/RateLimitedUI"
+import RateLimitedUI from "../../../shared/components/RateLimitedUI"
 
 const HomePage = () => {
   const [isRateLimited, setIsRateLimited] = useState(false)

@@ -1,6 +1,6 @@
 import toast from "react-hot-toast"
 import { useState, useEffect } from "react"
-import { useParams, Link } from "react-router"
+import { useParams } from "react-router"
 import api from "../lib/axios"
 import EntryForm from "../components/EntryForm"
 import NotFoundPage from "../../../shared/pages/NotFoundPage"
