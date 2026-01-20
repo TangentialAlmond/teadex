@@ -17,10 +17,8 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      // Go up TWO levels to find the root node_modules
-      'react': path.resolve(__dirname, '../../node_modules/react'),
-      'react-dom': path.resolve(__dirname, '../../node_modules/react-dom'),
-      'react/jsx-runtime': path.resolve(__dirname, '../../node_modules/react/jsx-runtime'),
+      // Use '@shared' as a clean shortcut for your components
+      '@shared': path.resolve(__dirname, '../shared')
     }
   },
   build: {
