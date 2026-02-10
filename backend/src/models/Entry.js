@@ -2,6 +2,12 @@ import mongoose from "mongoose"
 import countryList from "country-list" // For standardized list of countries
 
 // --- CONSTANTS AND ENUMERATIONS ---
+const STATUS_VALUES = [
+    "pending", "published", "rejected", "delete_requested", "deleted"
+]
+const VOTE_VALUES = [
+    "approve", "reject"
+]
 const TEA_TYPES = [
     "white", "green", "black", "yellow", "oolong",
     "dark", "tisane/non-camellia sinensis"
@@ -18,6 +24,51 @@ const PRODUCTION_STEPS = [
 ]
 
 const entrySchema = new mongoose.Schema({
+
+    // --- REVIEW FIELDS ---
+
+    // Status of the entry for guiding logic for staging workflow
+    status: {
+        type: String,
+        required: [true, "status is required."],
+        enum: {
+            values: STATUS_VALUES,
+            message: '{VALUE} is not a valid status.'
+        },
+        default: "pending"
+    },
+
+    // Details on whether this entry is based off another entry
+    isCopy: {
+        type: Boolean, 
+        required: [true, "isCopy is required"],
+        default: false
+    },
+    copyOf: {
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: "Entry",
+        // copyOf is only strictly required if this is an edit proposal
+        required: [
+            function() { return this.isCopy }, 
+            "copyOf ID is required for proposals."
+        ]
+    },
+
+    // Reviewer details
+    reviews: [{
+        reviewerId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        },
+        vote: { 
+            type: String, 
+            enum: VOTE_VALUES 
+        },
+        feedback: {
+            type: String,
+            trim: true
+        }
+    }],
 
     // --- REQUIRED FIELDS ---
 
