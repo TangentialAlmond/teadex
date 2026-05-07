@@ -13,7 +13,7 @@
     "dev:public": "npm run dev --workspace=client/public-client",
     "dev:admin": "npm run dev --workspace=client/admin-client",
     "dev:backend": "npm run dev --prefix backend",
-    "build": "npm install && npm run build --workspace=client/public-client",
+    "build": "npm ci && npm run build --workspace=client/public-client",
     "start": "npm run start --prefix backend"
   },
   "repository": {
