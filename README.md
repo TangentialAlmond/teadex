@@ -6,9 +6,12 @@
 ![Style](https://img.shields.io/badge/code%20style-no--semis-orange)
 [![Project Status: Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
-The TeaDex is a "Pokedex" for tea that aims to catalog information on tea through community contributions of photos and their knowledge on the cultivation and processing workflow. Currently, version 0.1 of the public-client (read-only) is deployed at https://teadex.onrender.com/. As the deployment is on the free-tier of Render, the TeaDex website may take a few minutes to load initially.
+The TeaDex is a "Pokedex" for tea that aims to catalog information on tea through community contributions of photos and their knowledge on the cultivation and processing workflow.
 
 Tea session count: 17 🍵
+
+> ## ⚠️ Defunct TeaDex v1
+> The first version of TeaDex was made publicly accessible via Render from early January 2026. A bug has appeared in TeaDex v1 which I first noticed in April 2026. As I'm overhauling the tech stack for TeaDex in the second version, I will not be addressing this bug. TeaDex v1 is, thus, no longer publicly accessible. Stay tuned for updates when TeaDex v2 is up!
 
 ## 📋 Table of Contents
 - [📋 Table of Contents](#-table-of-contents)
