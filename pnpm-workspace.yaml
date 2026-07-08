@@ -1,6 +1,5 @@
 allowBuilds:
-  sharp: false
-  unrs-resolver: false
+  supabase: true
 ignoredBuiltDependencies:
   - sharp
   - unrs-resolver
